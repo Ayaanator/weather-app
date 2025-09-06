@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 async function displayWeather() {
-  const weatherInfo = await fetchWeather(); // wait for the Promise to resolve
+  const weatherInfo = await fetchWeather(); 
 
   console.log(weatherInfo.city);
   console.log(weatherInfo.temp);
@@ -29,5 +29,4 @@ async function displayWeather() {
   console.log(weatherInfo.visibility);
 }
 
-// Call the async function
 displayWeather();
