@@ -1,3 +1,23 @@
+:root {
+    --high-priority: #eb5757;
+    --medium-priority: #eba857;
+    --low-priority: #a1eb57;
+
+    --background-color: #2e2a33;
+    --secondary-color: #524c5a;
+    --text-color: #c7ece9;
+    --accent-color: #8eaaa8;
+}
+
+html {
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  background-color: lightblue;
+    margin: 0;
+    padding: 0;
 }

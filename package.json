@@ -19,7 +19,6 @@
     "url": "https://github.com/Ayaanator/web-dev-template/issues"
   },
   "homepage": "https://github.com/Ayaanator/web-dev-template#readme",
-  "description": "",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "html-loader": "^5.1.0",
@@ -29,5 +28,6 @@
     "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
-  }
+  },
+  "description": ""
 }
