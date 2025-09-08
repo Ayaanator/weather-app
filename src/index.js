@@ -1,5 +1,7 @@
 import "./styles.css";
 import { fetchWeather } from "./data.js"
+import { SearchHandler } from "./search.js"
+
 
 const stored_build = localStorage.getItem("BUILD_ID");
 
@@ -17,17 +19,4 @@ if (process.env.NODE_ENV === "development") {
   console.log("Running in production mode!");
 }
 
-async function displayWeather() {
-  const weatherInfo = await fetchWeather(); // wait for the Promise to resolve
-
-  console.log(weatherInfo.city);
-  console.log(weatherInfo.temp);
-  console.log(weatherInfo.feelsLike);
-  console.log(weatherInfo.humidity);
-  console.log(weatherInfo.conditions);
-  console.log(weatherInfo.windSpeed);
-  console.log(weatherInfo.visibility);
-}
-
-// Call the async function
-displayWeather();
+const handler = new SearchHandler();

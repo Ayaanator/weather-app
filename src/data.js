@@ -1,6 +1,4 @@
-let city = "toronto";
-
-export async function fetchWeather() {
+export async function fetchWeather(city) {
 
     const response = await fetch(
         `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=9V4VDBHX7V28LW987NTMLCKH8`
@@ -12,6 +10,7 @@ export async function fetchWeather() {
 
     const data = await response.json();
     const cc = data.currentConditions;
+    console.log(data);
 
     const weatherInfo = {
         city: data.resolvedAddress,
