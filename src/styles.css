@@ -60,21 +60,27 @@ header {
 }
 
 #search input {
-    padding: 5px;
-    border-radius: 25px;
+    padding: 15px;
+    border-radius: 10px;
     border: 1px solid var(--accent-color);
     outline: none;
     font-family: 'Comfortaa';
     font-size: 16px;
     color: var(--text-color);
-    background-color: var(--secondary-color);
+    background-color: #212844;
    
     width: 50%;
+    transition: all 0.3s ease;
+}
+
+#search input:hover {
+    width: 60%;
+    background-color: var(--secondary-color);
 }
 
 #search img {
     border-radius: 50%;
-    width: 2.5%;
+    width: 4%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }

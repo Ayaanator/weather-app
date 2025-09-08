@@ -10,7 +10,13 @@ export class SearchHandler {
             if(bar.value.trim() !== "") {
                 this.displayWeather(bar.value);
             }
-        }) 
+        })
+
+        bar.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" && bar.value.trim() !== "") {
+                this.displayWeather(bar.value.trim());
+            }   
+        });
     }
 
     async displayWeather(city) {
