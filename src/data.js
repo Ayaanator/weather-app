@@ -4,7 +4,7 @@ export async function fetchWeather(city) {
         const response = await fetch(
             `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=9V4VDBHX7V28LW987NTMLCKH8`
         );
-
+        
         if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
         }

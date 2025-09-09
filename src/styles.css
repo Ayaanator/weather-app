@@ -103,8 +103,10 @@ header {
     border: 1px solid var(--accent-color);
     border-radius: 25px;
 
-    padding-left: 30px;
-    padding-right: 180px;
+    padding-left: 2%;
+    padding-right: 8%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 #info-header {
@@ -115,9 +117,24 @@ header {
 #temp {
     display: flex;
     flex-direction: row;
+    align-items: center;
+
+    gap: 5%;
+}
+
+#temp h2 {
+    margin: 0px;
 }
 
 #sub-temp {
     display: flex;
     flex-direction: column;
+}
+
+#sub-temp h3 {
+    margin: 0px;
+}
+
+#temp-text {
+    font-size: xxx-large;
 }
