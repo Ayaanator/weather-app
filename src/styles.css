@@ -91,3 +91,33 @@ header {
     transform: scale(1.2) rotate(-15deg);
     box-shadow: 0 0 10px var(--accent-color);
 }
+
+#main-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 50%;
+
+    background-color: var(--secondary-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 25px;
+
+    padding-left: 30px;
+    padding-right: 180px;
+}
+
+#info-header {
+    display: flex;
+    flex-direction: column;
+}
+
+#temp {
+    display: flex;
+    flex-direction: row;
+}
+
+#sub-temp {
+    display: flex;
+    flex-direction: column;
+}
