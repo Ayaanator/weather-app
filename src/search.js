@@ -1,8 +1,12 @@
 import { fetchWeather } from "./data.js"
-
+import { WeatherUpdater } from "./update.js";
 
 export class SearchHandler {
+    updater = new WeatherUpdater();
+
     constructor() {
+        
+
         const bar = document.querySelector("#search-bar");
         const search = document.querySelector("#search-button");
         
@@ -21,13 +25,6 @@ export class SearchHandler {
 
     async displayWeather(city) {
         const weatherInfo = await fetchWeather(city); 
-
-        console.log(weatherInfo.city);
-        console.log(weatherInfo.temp);
-        console.log(weatherInfo.feelsLike);
-        console.log(weatherInfo.humidity);
-        console.log(weatherInfo.conditions);
-        console.log(weatherInfo.windSpeed);
-        console.log(weatherInfo.visibility);
+        this.updater.add_main(weatherInfo);
     }
 }

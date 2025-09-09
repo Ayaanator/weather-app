@@ -92,10 +92,8 @@ header {
     box-shadow: 0 0 10px var(--accent-color);
 }
 
-#main-info {
+.info {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     gap: 20px;
     width: 50%;
 
@@ -107,6 +105,11 @@ header {
     padding-right: 8%;
     padding-top: 1%;
     padding-bottom: 1%;
+}
+
+#main-info {
+    align-items: center;
+    justify-content: space-between;
 }
 
 #info-header {
@@ -137,4 +140,8 @@ header {
 
 #temp-text {
     font-size: xxx-large;
+}
+
+.section img {
+    width: 4%;
 }

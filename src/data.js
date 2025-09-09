@@ -20,7 +20,8 @@ export async function fetchWeather(city) {
             humidity: cc.humidity,
             conditions: cc.conditions,
             windSpeed: cc.windspeed,
-            visibility: cc.visibility
+            visibility: cc.visibility,
+            description: data.description
         };
 
         return weatherInfo;
