@@ -19,7 +19,7 @@ export class WeatherUpdater {
                 </div>
 
                 <div id="temp">
-                    <h2 id="temp-text" class="primary">${weatherInfo.temp}°C</h2>
+                    <h2 id="temp-text" class="primary">${weatherInfo.temp}°F</h2>
                     <div id="sub-temp">
                         <h3 class="secondary">${weatherInfo.conditions}</h3>
                         <h3 class="secondary">Feels Like ${weatherInfo.feelsLike}°F</h3>
