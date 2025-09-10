@@ -21,9 +21,12 @@ export async function fetchWeather(city) {
             conditions: cc.conditions,
             windSpeed: cc.windspeed,
             visibility: cc.visibility,
-            description: data.description
+            description: data.description,
+            sunrise: cc.sunrise,
+            sunset: cc.sunset
         };
 
+        console.log(weatherInfo);
         return weatherInfo;
     } catch {
         console.error("fetchWeather failed: ", error.message);
