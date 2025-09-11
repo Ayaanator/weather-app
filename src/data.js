@@ -23,6 +23,7 @@ export async function fetchWeather(city) {
             visibility: cc.visibility,
             sunrise: cc.sunrise,
             sunset: cc.sunset,
+            windDirection: cc.winddir,
 
             description: data.description,
         };

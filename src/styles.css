@@ -175,5 +175,4 @@ header {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
-    border: 1px solid red;
 }
