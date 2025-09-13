@@ -26,7 +26,8 @@ export async function fetchWeather(city) {
             windDirection: cc.winddir,
 
             description: data.description,
-            icon: cc.icon
+            icon: cc.icon,
+            days: data.days
         };
 
         console.log(weatherInfo);

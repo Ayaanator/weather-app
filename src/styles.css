@@ -35,7 +35,6 @@ header {
 
 .primary {
     font-family: 'Fredoka';
-    margin-bottom: 0px;
 }
 
 .secondary {
@@ -102,6 +101,11 @@ header {
     border-radius: 25px;
 
     box-sizing: border-box;
+
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 #weather-icon {
@@ -151,11 +155,6 @@ header {
 #secondary-info {
     display: flex;
     flex-direction: column;
-
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-top: 1%;
-    padding-bottom: 1%;
 }
 
 .section {
@@ -179,4 +178,34 @@ header {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
+}
+
+#prediction {
+    display: flex;
+    flex-direction: column;
+}
+
+#day-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.day {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+
+    background-color: var(--background-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 25px;
+
+    box-sizing: border-box;
+}
+
+.day img {
+    width: 3%;
+    height: 3%;
 }

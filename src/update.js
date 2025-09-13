@@ -100,4 +100,64 @@ export class WeatherUpdater {
         `
         second_info.innerHTML = html;
     }
+
+    add_prediction(weatherInfo) {
+        const prediction_info = document.querySelector("#prediction");
+
+        const html = `
+        <h2 class="primary">7 Day Forecast</h2>
+
+            <div id="day-container">
+                <div class="day">
+                    <h3 class="secondary">${weatherInfo.days[0].datetime}</h3>
+                    <img src="${this.icons(`./${weatherInfo.days[0].icon}.svg`)}">
+                    <h3 class="secondary">${weatherInfo.days[0].conditions}</h3>
+                    <h3 class="primary">${weatherInfo.days[0].temp}°F</h3>
+                </div>
+
+                <div class="day">
+                    <h3 class="secondary">${weatherInfo.days[1].datetime}</h3>
+                    <img src="${this.icons(`./${weatherInfo.days[1].icon}.svg`)}">
+                    <h3 class="secondary">${weatherInfo.days[1].conditions}</h3>
+                    <h3 class="primary">${weatherInfo.days[1].temp}°F</h3>
+                </div>
+
+                <div class="day">
+                    <h3 class="secondary">${weatherInfo.days[2].datetime}</h3>
+                    <img src="${this.icons(`./${weatherInfo.days[2].icon}.svg`)}">
+                    <h3 class="secondary">${weatherInfo.days[2].conditions}</h3>
+                    <h3 class="primary">${weatherInfo.days[2].temp}°F</h3>
+                </div>
+
+                <div class="day">
+                    <h3 class="secondary">${weatherInfo.days[3].datetime}</h3>
+                    <img src="${this.icons(`./${weatherInfo.days[3].icon}.svg`)}">
+                    <h3 class="secondary">${weatherInfo.days[3].conditions}</h3>
+                    <h3 class="primary">${weatherInfo.days[3].temp}°F</h3>
+                </div>
+
+                <div class="day">
+                    <h3 class="secondary">${weatherInfo.days[4].datetime}</h3>
+                    <img src="${this.icons(`./${weatherInfo.days[4].icon}.svg`)}">
+                    <h3 class="secondary">${weatherInfo.days[4].conditions}</h3>
+                    <h3 class="primary">${weatherInfo.days[4].temp}°F</h3>
+                </div>
+
+                <div class="day">
+                    <h3 class="secondary">${weatherInfo.days[5].datetime}</h3>
+                    <img src="${this.icons(`./${weatherInfo.days[5].icon}.svg`)}">
+                    <h3 class="secondary">${weatherInfo.days[5].conditions}</h3>
+                    <h3 class="primary">${weatherInfo.days[5].temp}°F</h3>
+                </div>
+
+                <div class="day">
+                    <h3 class="secondary">${weatherInfo.days[6].datetime}</h3>
+                    <img src="${this.icons(`./${weatherInfo.days[6].icon}.svg`)}">
+                    <h3 class="secondary">${weatherInfo.days[6].conditions}</h3>
+                    <h3 class="primary">${weatherInfo.days[6].temp}°F</h3>
+                </div>
+            </div>
+        `
+        prediction_info.innerHTML = html;
+    }
 }

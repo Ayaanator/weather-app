@@ -27,5 +27,6 @@ export class SearchHandler {
         const weatherInfo = await fetchWeather(city); 
         this.updater.add_main(weatherInfo);
         this.updater.add_second(weatherInfo);
+        this.updater.add_prediction(weatherInfo);
     }
 }
