@@ -8,6 +8,8 @@ import wind_speed from "./images/wind-speed.svg"
 import wind_direction from "./images/wind-direction.svg"
 
 export class WeatherUpdater {
+    icons = require.context("./images/icons", false, /\.svg$/);
+
     formatTime(timeString) {
         const [hoursStr, minutesStr] = timeString.split(":");
         let hours = parseInt(hoursStr, 10);
@@ -28,6 +30,7 @@ export class WeatherUpdater {
         console.log(weatherInfo.conditions);
         console.log(weatherInfo.windSpeed);
         console.log(weatherInfo.visibility);*/
+        console.log(weatherInfo.icon);
 
         const html = `
         <div id="left-info">
@@ -46,7 +49,7 @@ export class WeatherUpdater {
                 <h3 class="secondary">${weatherInfo.description}</h3>
             </div>
 
-            <img src="${test_icon}">
+            <img src="${this.icons(`./${weatherInfo.icon}.svg`)}" id="weather-icon">
         `
         main_info.innerHTML = html;
     }

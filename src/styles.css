@@ -104,6 +104,10 @@ header {
     box-sizing: border-box;
 }
 
+#weather-icon {
+    width: 15%;
+}
+
 #main-info {
     align-items: center;
     justify-content: space-between;

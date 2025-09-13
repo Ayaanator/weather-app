@@ -6,7 +6,7 @@ export async function fetchWeather(city) {
         );
         
         if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
@@ -26,11 +26,12 @@ export async function fetchWeather(city) {
             windDirection: cc.winddir,
 
             description: data.description,
+            icon: cc.icon
         };
 
         console.log(weatherInfo);
         return weatherInfo;
-    } catch {
+    } catch(error) {
         console.error("fetchWeather failed: ", error.message);
         return null;
     }
