@@ -9,6 +9,7 @@ import wind_direction from "./images/wind-direction.svg"
 
 export class WeatherUpdater {
     icons = require.context("./images/icons", false, /\.svg$/);
+    container = document.querySelector("#container");
 
     formatTime(timeString) {
         const [hoursStr, minutesStr] = timeString.split(":");
@@ -64,7 +65,10 @@ export class WeatherUpdater {
     }
 
     add_main(weatherInfo) {
-        const main_info = document.querySelector("#main-info");
+        const main_info = document.createElement("div");
+        main_info.id = "main-info";
+        main_info.className = "info";
+        this.container.appendChild(main_info);
 
         const html = `
         <div id="left-info">
@@ -89,7 +93,10 @@ export class WeatherUpdater {
     }
 
     add_second(weatherInfo) {
-        const second_info = document.querySelector("#secondary-info");
+        const second_info = document.createElement("div");
+        second_info.id = "secondary-info";
+        second_info.className = "info";
+        this.container.appendChild(second_info);
 
         const html = `
         <h2 class="primary">Today's Weather Details</h2>
@@ -136,7 +143,11 @@ export class WeatherUpdater {
     }
 
     add_prediction(weatherInfo) {
-        const prediction_info = document.querySelector("#prediction");
+        const prediction_info = document.createElement("div");
+        prediction_info.id = "prediction";
+        prediction_info.className = "info";
+        this.container.appendChild(prediction_info);
+
         const begin = 1;
         const end = 7;
 
