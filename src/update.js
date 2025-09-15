@@ -35,23 +35,23 @@ export class WeatherUpdater {
                 hour12: true
             });
         } else {
-            const date = new Date(dateString);
+            const [year, month, day] = dateString.split("-").map(Number);
+            const date = new Date(year, month - 1, day);
+
             const today = new Date();
-            const tomorrow = new Date();
+            today.setHours(0, 0, 0, 0);
+            const tomorrow = new Date(today);
             tomorrow.setDate(today.getDate() + 1);
 
-            const isTomorrow =
-                date.getFullYear() === tomorrow.getFullYear() &&
-                date.getMonth() === tomorrow.getMonth() &&
-                date.getDate() === tomorrow.getDate();
+            if (date.getTime() === tomorrow.getTime()) {
+                return "Tomorrow"
+            }
 
-            const shortDate = date.toLocaleDateString("en-US", {
+            return date.toLocaleDateString("en-US", {
                 weekday: "short",
                 month: "short",
                 day: "numeric"
             });
-
-            return isTomorrow ? "Tomorrow" : shortDate;
         }
     }
 
@@ -137,14 +137,14 @@ export class WeatherUpdater {
 
     add_prediction(weatherInfo) {
         const prediction_info = document.querySelector("#prediction");
-        const initial = 1;
-        const range = 7;
+        const begin = 1;
+        const end = 7;
 
         const html = `
-        <h2 class="primary">${range} Day Forecast</h2>
+        <h2 class="primary">${end} Day Forecast</h2>
 
             <div id="day-container">
-                ${weatherInfo.days.slice(initial, range + initial).map((day) => 
+                ${weatherInfo.days.slice(begin, end + begin).map((day) => 
                     `<div class="day">
                         <div class="day-left">
                             <h3 class="secondary">${this.formatDate(day.datetime, false)}</h3>
@@ -153,7 +153,7 @@ export class WeatherUpdater {
                         </div>
 
                         <div class="day-right">
-                            <h3 class="primary">${day.temp}°C</h3>
+                            <h3 class="primary">${this.to_celsius(day.temp)}°C</h3>
                         </div>
                     </div>`).join('')}
             </div>
