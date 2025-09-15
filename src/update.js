@@ -21,29 +21,63 @@ export class WeatherUpdater {
         return `${hours}:${minutes.toString().padStart(2, "0")} ${ampm}`;
     }
 
+    formatDate(dateString) {
+        if(dateString === undefined) {
+            const date = new Date();
+
+            return date.toLocaleString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true
+            });
+        } else {
+            const date = new Date(dateString);
+            const today = new Date();
+            const tomorrow = new Date();
+            tomorrow.setDate(today.getDate() + 1);
+
+            const isTomorrow =
+                date.getFullYear() === tomorrow.getFullYear() &&
+                date.getMonth() === tomorrow.getMonth() &&
+                date.getDate() === tomorrow.getDate();
+
+            const shortDate = date.toLocaleDateString("en-US", {
+                weekday: "short",
+                month: "short",
+                day: "numeric"
+            });
+
+            return isTomorrow ? "Tomorrow" : shortDate;
+        }
+    }
+
+    to_celsius(f) {
+        return ((f - 32) * 5 / 9).toFixed(1);
+    }
+
+    to_km(m) {
+        return (m * 1.60934).toFixed(1);
+    }
+
     add_main(weatherInfo) {
         const main_info = document.querySelector("#main-info");
-        /*console.log(weatherInfo.city);
-        console.log(weatherInfo.temp);
-        console.log(weatherInfo.feelsLike);
-        console.log(weatherInfo.humidity);
-        console.log(weatherInfo.conditions);
-        console.log(weatherInfo.windSpeed);
-        console.log(weatherInfo.visibility);*/
-        console.log(weatherInfo.icon);
 
         const html = `
         <div id="left-info">
                 <div id="info-header">
                     <h2 class="primary">${weatherInfo.city}</h2>
-                    <h3 class="secondary">Monday, September 8, 2025 at 12:45 PM.</h3>
+                    <h3 class="secondary">${this.formatDate()}</h3>
                 </div>
 
                 <div id="temp">
-                    <h2 id="temp-text" class="primary">${weatherInfo.temp}°F</h2>
+                    <h2 id="temp-text" class="primary">${this.to_celsius(weatherInfo.temp)}°C</h2>
                     <div id="sub-temp">
                         <h3 class="secondary">${weatherInfo.conditions}</h3>
-                        <h3 class="secondary">Feels Like ${weatherInfo.feelsLike}°F</h3>
+                        <h3 class="secondary">Feels Like ${this.to_celsius(weatherInfo.feelsLike)}°C</h3>
                     </div>
                 </div>
                 <h3 class="secondary">${weatherInfo.description}</h3>
@@ -76,7 +110,7 @@ export class WeatherUpdater {
                 <div class="section">
                     <img src="${visibility}">
                     <h3 class="secondary">Visibility</h3>
-                    <h3 class="secondary">${weatherInfo.visibility} km</h3>
+                    <h3 class="secondary">${this.to_km(weatherInfo.visibility)} km</h3>
                 </div>
 
                 <div class="section">
@@ -88,7 +122,7 @@ export class WeatherUpdater {
                 <div class="section">
                     <img src="${wind_speed}">
                     <h3 class="secondary">Wind Speed</h3>
-                    <h3 class="secondary">${weatherInfo.windSpeed}km/h</h3>
+                    <h3 class="secondary">${this.to_km(weatherInfo.windSpeed)}km/h</h3>
                 </div>
                 
                 <div class="section">
@@ -103,20 +137,24 @@ export class WeatherUpdater {
 
     add_prediction(weatherInfo) {
         const prediction_info = document.querySelector("#prediction");
+        const initial = 1;
+        const range = 7;
 
         const html = `
-        <h2 class="primary">7 Day Forecast</h2>
+        <h2 class="primary">${range} Day Forecast</h2>
 
             <div id="day-container">
-                ${weatherInfo.days.slice(0, 7).map((day, i) => 
+                ${weatherInfo.days.slice(initial, range + initial).map((day) => 
                     `<div class="day">
                         <div class="day-left">
-                            <h3 class="secondary">${weatherInfo.days[i].datetime}</h3>
-                            <img src="${this.icons(`./${weatherInfo.days[i].icon}.svg`)}">
-                            <h3 class="secondary">${weatherInfo.days[i].conditions}</h3>
+                            <h3 class="secondary">${this.formatDate(day.datetime, false)}</h3>
+                            <img src="${this.icons(`./${day.icon}.svg`)}">
+                            <h3 class="secondary">${day.conditions}</h3>
                         </div>
-                    
-                        <h3 class="primary">${weatherInfo.days[i].temp}°F</h3>
+
+                        <div class="day-right">
+                            <h3 class="primary">${day.temp}°C</h3>
+                        </div>
                     </div>`).join('')}
             </div>
         `
