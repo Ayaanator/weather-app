@@ -24,7 +24,16 @@ export class SearchHandler {
     }
 
     async displayWeather(city) {
-        const weatherInfo = await fetchWeather(city); 
+        const weatherInfo = await fetchWeather(city);
+
+        const main = document.querySelector("#main-info");
+        const secondary = document.querySelector("#secondary-info");
+        const prediction = document.querySelector("#prediction");
+
+        if (main) main.remove();
+        if (secondary) secondary.remove();
+        if (prediction) prediction.remove();
+
         this.updater.add_main(weatherInfo);
         this.updater.add_second(weatherInfo);
         this.updater.add_prediction(weatherInfo);
